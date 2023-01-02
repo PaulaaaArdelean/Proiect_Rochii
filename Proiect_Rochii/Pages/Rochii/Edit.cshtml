@@ -1,0 +1,81 @@
+﻿@page
+@model Proiect_Rochii.Pages.Rochii.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Rochie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Rochie.ID" />
+            <div class="form-group">
+                <label asp-for="Rochie.Denumire" class="control-label"></label>
+                <input asp-for="Rochie.Denumire" class="form-control" />
+                <span asp-validation-for="Rochie.Denumire" class="text-danger"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <label asp-for="Rochie.Pret" class="control-label"></label>
+                <input asp-for="Rochie.Pret" class="form-control" />
+                <span asp-validation-for="Rochie.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rochie.Marime" class="control-label"></label>
+                <input asp-for="Rochie.Marime" class="form-control" />
+                <span asp-validation-for="Rochie.Marime" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Rochie.DesignerID" class="control-label"></label>
+                <select asp-for="Rochie.DesignerID" class="form-control" asp-items="ViewBag.DesignerID" />
+                <span asp-validation-for="Rochie.DesignerID" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+ <div class="table">
+ <table>
+ <tr>
+ @{
+ int cnt = 0;
+ foreach (var cat in Model.CategorieAsignataDataList)
+{
+ if (cnt++ % 3 == 0)
+{
+@:</tr><tr>
+}
+@:<td>
+ <input type="checkbox"
+ name="categoriiSelectate"
+ value="@cat.CategorieID"
+ @(Html.Raw(cat.Asignata ?
+"checked=\"checked\"" : "")) />
+ @cat.CategorieID @: @cat.Nume
+ @:</td>
+ }
+ @:</tr>
+}
+ </table>
+ </div>
+ <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+ </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Înapoi la listă</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,49 @@
+﻿@page
+@model Proiect_Rochii.Pages.Cliente.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Clienta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.NumeClienta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.NumeClienta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.PrenumeClienta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.PrenumeClienta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Telefon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Telefon)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Clienta?.ID">Editează</a> |
+    <a asp-page="./Index">Înapoi la listă</a>
+</div>

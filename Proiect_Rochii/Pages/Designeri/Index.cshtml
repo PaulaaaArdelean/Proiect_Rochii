@@ -1,0 +1,73 @@
+﻿@page "{id:int?}"
+@model Proiect_Rochii.Pages.Designeri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Designeri</h1>
+
+<p>
+    <a asp-page="Create">Designer nou</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Designer[0].NumeDesigner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DesignerData.Designeri)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.DesignerID)
+            {
+                selectedRow = "table-success";
+            }
+     <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeDesigner)
+            </td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Editează</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Vezi Detalii</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Șterge</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (Model.DesignerData.Rochii != null)
+{
+    <h3>Rochii create de un designer selectat</h3>
+    <table class="table">
+
+        @foreach (var item in Model.DesignerData.Designeri)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.DesignerID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+
+                <td>
+                    @{
+                        foreach (var b in item.Rochii)
+                        {
+
+                            @b.Denumire @: @b.Designer.NumeDesigner
+
+                            <br />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+

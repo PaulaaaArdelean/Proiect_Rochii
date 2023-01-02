@@ -1,0 +1,50 @@
+﻿@page
+@model Proiect_Rochii.Pages.Imprumuturi.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editare</h1>
+
+<h4>Imprumut</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Imprumut.ID" />
+            <div class="form-group">
+                <label asp-for="Imprumut.ClientaID" class="control-label"></label>
+                <select asp-for="Imprumut.ClientaID" class="form-control" asp-items="ViewBag.ClientaID"></select>
+                <span asp-validation-for="Imprumut.ClientaID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imprumut.RochieID" class="control-label"></label>
+                <select asp-for="Imprumut.RochieID" class="form-control" asp-items="ViewBag.RochieID"></select>
+                <span asp-validation-for="Imprumut.RochieID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imprumut.DataImpumutare" class="control-label"></label>
+                <input asp-for="Imprumut.DataImpumutare" class="form-control" />
+                <span asp-validation-for="Imprumut.DataImpumutare" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Imprumut.DataReturnare" class="control-label"></label>
+                <input asp-for="Imprumut.DataReturnare" class="form-control" />
+                <span asp-validation-for="Imprumut.DataReturnare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Înapoi la listă</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

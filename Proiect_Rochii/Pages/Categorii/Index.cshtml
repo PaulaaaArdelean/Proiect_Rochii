@@ -1,0 +1,36 @@
+﻿@page
+@model Proiect_Rochii.Pages.Categorii.IndexModel
+
+@{
+    ViewData["Title"] = "Categorii";
+}
+
+<h1>Categorii</h1>
+
+<p>
+    <a asp-page="Create">Creați o nouă categorie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie[0].NumeCategorie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Categorie) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeCategorie)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Editează</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Vezi Detalii</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Șterge</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

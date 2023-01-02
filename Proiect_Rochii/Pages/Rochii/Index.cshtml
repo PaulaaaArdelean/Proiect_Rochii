@@ -1,0 +1,86 @@
+﻿@page
+@model Proiect_Rochii.Pages.Rochii.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rochii de mirese</h1>
+
+<p>
+    <a asp-page="Create">Adăugați o rochie nouă</a>
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Caută rochia după denumire sau după numele designerului:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Înapoi la lista cu toate rochiile</a>
+        </p>
+    </div>
+</form>
+
+<a asp-page="./Index" asp-route-sortOrder="@Model.SortarePret"> Sortare descrescatoare in functie de pret  </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rochie[0].Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rochie[0].Designer.NumeDesigner)
+            </th>
+            <th>
+                 
+                @Html.DisplayNameFor(model => model.Rochie[0].Pret)
+               
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rochie[0].Marime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rochie[0].CategoriiRochii)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RochieD.Rochii)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.RochieID)
+            {
+                selectedRow = "table-success";
+            }
+     <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designer.NumeDesigner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marime)
+            </td>
+                <td>
+                    @{
+                        foreach (var category in item.CategoriiRochii)
+                        {
+                            @category.Categorie.ID @: @category.Categorie.NumeCategorie <br />
+                        }
+                    }
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Editează</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Vezi Detalii</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Șterge</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

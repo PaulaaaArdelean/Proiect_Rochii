@@ -1,0 +1,43 @@
+﻿@page
+@model Proiect_Rochii.Pages.Imprumuturi.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Imprumut</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imprumut.Clienta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imprumut.Clienta.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imprumut.Rochie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imprumut.Rochie.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imprumut.DataImpumutare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imprumut.DataImpumutare)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imprumut.DataReturnare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imprumut.DataReturnare)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Imprumut?.ID">Editare</a> |
+    <a asp-page="./Index">Inapoi la lista</a>
+</div>

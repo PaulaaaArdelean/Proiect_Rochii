@@ -1,0 +1,54 @@
+﻿@page
+@model Proiect_Rochii.Pages.Imprumuturi.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Împrumuturi</h1>
+
+<p>
+    <a asp-page="Create">Împrumut nou</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imprumut[0].Clienta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imprumut[0].Rochie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imprumut[0].DataImpumutare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imprumut[0].DataReturnare)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Imprumut) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clienta.NumeClienta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rochie.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataImpumutare)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataReturnare)
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Editează</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Vezi detalii</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Șterge</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

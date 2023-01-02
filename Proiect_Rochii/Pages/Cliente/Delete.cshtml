@@ -1,0 +1,52 @@
+﻿@page
+@model Proiect_Rochii.Pages.Cliente.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Ștergere</h1>
+
+<h3>Sunteți sigur ca doriți să ștergeți asta?</h3>
+<div>
+    <h4>Clienta</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.NumeClienta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.NumeClienta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.PrenumeClienta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.PrenumeClienta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clienta.Telefon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clienta.Telefon)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Clienta.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Înapoi la listă</a>
+    </form>
+</div>
