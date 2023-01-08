@@ -26,14 +26,14 @@ namespace Proiect_Rochii.Pages.Rochii
         public int CategorieID { get; set; }
 
         public string SortarePret { get; set; }
-        // public string SortareDesigner { get; set; }
+        //public string SortarePretCresc { get; set; }
         public string CurrentFilter { get; set; }
         public async Task OnGetAsync(int? id, int? categorieID, string ordineSortare, string searchString)
         {
             RochieD = new RochieData();
 
             SortarePret = String.IsNullOrEmpty(ordineSortare) ? "pret_desc" : "";
-          //  SortareDesigner = String.IsNullOrEmpty(ordineSortare) ? "designer_desc" : "";
+         // SortarePretCresc = String.IsNullOrEmpty(ordineSortare) ? "pret_cresc" : "";
 
             CurrentFilter = searchString;
 
@@ -65,10 +65,9 @@ namespace Proiect_Rochii.Pages.Rochii
                     case "pret_desc":
                         RochieD.Rochii = RochieD.Rochii.OrderByDescending(s =>   s.Pret);
                         break;
-                    //  case "designer_desc":
-                    //    RochieD.Rochii = RochieD.Rochii.OrderByDescending(s =>
-                    //  s.Designer.NumeDesigner);
-                    //   break;
+                    // case "pret_cresc":
+                      //  RochieD.Rochii = RochieD.Rochii.OrderByAscending(s => s.Pret);
+                       // break;
 
 
                 }

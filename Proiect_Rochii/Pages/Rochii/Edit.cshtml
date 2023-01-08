@@ -2,10 +2,10 @@
 @model Proiect_Rochii.Pages.Rochii.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editare";
 }
 
-<h1>Edit</h1>
+<h1>Editare</h1>
 
 <h4>Rochie</h4>
 <hr />
@@ -32,10 +32,12 @@
                 <span asp-validation-for="Rochie.Marime" class="text-danger"></span>
             </div>
             
-            <div class="form-group">
-                <label asp-for="Rochie.DesignerID" class="control-label"></label>
-                <select asp-for="Rochie.DesignerID" class="form-control" asp-items="ViewBag.DesignerID" />
-                <span asp-validation-for="Rochie.DesignerID" class="text-danger"></span>
+           
+             <div class="form-group">
+                <label asp-for="Rochie.Designer.NumeDesigner" class="control-label">Nume Designer</label>
+                <select asp-for="Rochie.Designer.NumeDesigner" class="form-control" asp-items="ViewBag.DesignerID">
+                </select>
+                <span asp-validation-for="Rochie.Designer.NumeDesigner" class="text-danger"></span>
             </div>
             
             <div class="form-group">
@@ -56,7 +58,8 @@
  value="@cat.CategorieID"
  @(Html.Raw(cat.Asignata ?
 "checked=\"checked\"" : "")) />
- @cat.CategorieID @: @cat.Nume
+ //@cat.CategorieID
+ @: @cat.Nume
  @:</td>
  }
  @:</tr>
