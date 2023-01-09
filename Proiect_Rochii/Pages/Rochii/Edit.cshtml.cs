@@ -29,7 +29,7 @@ namespace Proiect_Rochii.Pages.Rochii
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)// || _context.Rochie == null)
+            if (id == null) || _context.Rochie == null)
             {
                 return NotFound();
             }
@@ -39,18 +39,17 @@ namespace Proiect_Rochii.Pages.Rochii
  //.AsNoTracking()
  //.FirstOrDefaultAsync(m => m.ID == id);
 
-            var rochie =  await _context.Rochie.FirstOrDefaultAsync(m => m.ID == id);
+            var rochie =  await _context.Rochie
+                .Include(b => b.Designer)
+                .Include(b => b.CategoriiRochii)
+                .ThenInclude(b => b.Categorie)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (rochie == null)
             {
                 return NotFound();
             }
-            Rochie = rochie;
-            Rochie = await _context.Rochie
-.Include(b => b.Designer)
-.Include(b => b.CategoriiRochii).ThenInclude(b => b.Categorie)
-.AsNoTracking()
-.FirstOrDefaultAsync(m => m.ID == id);
-            PopulateAssignedCategoryData(_context, Rochie);
+            PopulateAssignedCategoryData(_context, rochie);
 
 
            // Rochie = rochie;
@@ -70,7 +69,6 @@ namespace Proiect_Rochii.Pages.Rochii
           
             var rochieToUpdate = await _context.Rochie
             .Include(i => i.Designer)
-               
             .Include(i => i.CategoriiRochii)
             .ThenInclude(i => i.Categorie)
             .FirstOrDefaultAsync(s => s.ID == id);
