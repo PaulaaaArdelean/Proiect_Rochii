@@ -7,7 +7,7 @@
 
 <h1>Editare</h1>
 
-<h4>Imprumut</h4>
+<h4>Împrumut</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,27 +15,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Imprumut.ID" />
             <div class="form-group">
-                <label asp-for="Imprumut.ClientaID" class="control-label"></label>
+                <label asp-for="Imprumut.ClientaID" class="control-label">Clienta</label>
                 <select asp-for="Imprumut.ClientaID" class="form-control" asp-items="ViewBag.ClientaID"></select>
                 <span asp-validation-for="Imprumut.ClientaID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imprumut.RochieID" class="control-label"></label>
+                <label asp-for="Imprumut.RochieID" class="control-label">Denumirea rochiei</label>
                 <select asp-for="Imprumut.RochieID" class="form-control" asp-items="ViewBag.RochieID"></select>
                 <span asp-validation-for="Imprumut.RochieID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imprumut.DataImpumutare" class="control-label"></label>
+                <label asp-for="Imprumut.DataImpumutare" class="control-label"> Data împrumutării</label>
                 <input asp-for="Imprumut.DataImpumutare" class="form-control" />
                 <span asp-validation-for="Imprumut.DataImpumutare" class="text-danger"></span>
             </div>
              <div class="form-group">
-                <label asp-for="Imprumut.DataReturnare" class="control-label"></label>
+                <label asp-for="Imprumut.DataReturnare" class="control-label">Data returnării</label>
                 <input asp-for="Imprumut.DataReturnare" class="form-control" />
                 <span asp-validation-for="Imprumut.DataReturnare" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvează" class="btn btn-primary" />
             </div>
         </form>
     </div>

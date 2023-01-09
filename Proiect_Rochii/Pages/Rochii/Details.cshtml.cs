@@ -31,7 +31,7 @@ namespace Proiect_Rochii.Pages.Rochii
                 return NotFound();
             }
 
-            var rochie = await _context.Rochie.FirstOrDefaultAsync(m => m.ID == id);
+            var rochie = await _context.Rochie.Include(b => b.Designer).FirstOrDefaultAsync(m => m.ID == id);
             if (rochie == null)
             {
                 return NotFound();

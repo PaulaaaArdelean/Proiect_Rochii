@@ -12,32 +12,37 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imprumut.Clienta)
+         <!--   @Html.DisplayNameFor(model => model.Imprumut.Clienta) -->
+         Numele clientei
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imprumut.Clienta.ID)
+            @Html.DisplayFor(model => model.Imprumut.Clienta.NumeIntreg)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imprumut.Rochie)
+           <!-- @Html.DisplayNameFor(model => model.Imprumut.Rochie) -->
+           Denumirea rochiei
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imprumut.Rochie.ID)
+            @Html.DisplayFor(model => model.Imprumut.Rochie.Denumire)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imprumut.DataImpumutare)
+            <!--@Html.DisplayNameFor(model => model.Imprumut.DataImpumutare )-->
+            Data împrumutării
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Imprumut.DataImpumutare)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imprumut.DataReturnare)
+            <!--@Html.DisplayNameFor(model => model.Imprumut.DataReturnare)-->
+            Data returnării
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imprumut.DataReturnare)
+            @Html.DisplayFor(model => model.Imprumut.DataReturnare)  -->
+            
         </dd>
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Imprumut?.ID">Editare</a> |
-    <a asp-page="./Index">Inapoi la lista</a>
+    <a asp-page="./Index">Înapoi la lista</a>
 </div>

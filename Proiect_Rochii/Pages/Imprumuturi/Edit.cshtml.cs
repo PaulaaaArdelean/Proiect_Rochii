@@ -36,8 +36,8 @@ namespace Proiect_Rochii.Pages.Imprumuturi
                 return NotFound();
             }
             Imprumut = imprumut;
-           ViewData["ClientaID"] = new SelectList(_context.Clienta, "ID", "ID");
-           ViewData["RochieID"] = new SelectList(_context.Rochie, "ID", "ID");
+           ViewData["ClientaID"] = new SelectList(_context.Clienta, "ID", "NumeIntreg");
+           ViewData["RochieID"] = new SelectList(_context.Rochie, "ID", "Denumire");
             return Page();
         }
 

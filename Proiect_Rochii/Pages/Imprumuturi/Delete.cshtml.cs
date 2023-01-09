@@ -29,7 +29,7 @@ namespace Proiect_Rochii.Pages.Imprumuturi
                 return NotFound();
             }
 
-            var imprumut = await _context.Imprumut.FirstOrDefaultAsync(m => m.ID == id);
+            var imprumut = await _context.Imprumut.Include(b => b.Clienta).Include(b => b.Rochie).FirstOrDefaultAsync(m => m.ID == id);
 
             if (imprumut == null)
             {

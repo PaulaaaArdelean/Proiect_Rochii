@@ -29,35 +29,39 @@ namespace Proiect_Rochii.Pages.Rochii
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Rochie == null)
+            if (id == null)// || _context.Rochie == null)
             {
                 return NotFound();
             }
-            Rochie = await _context.Rochie
- .Include(b => b.Designer)
- .Include(b => b.CategoriiRochii).ThenInclude(b => b.Categorie)
- .AsNoTracking()
- .FirstOrDefaultAsync(m => m.ID == id);
+      //      Rochie = await _context.Rochie
+ //.Include(b => b.Designer)
+ //.Include(b => b.CategoriiRochii).ThenInclude(b => b.Categorie)
+ //.AsNoTracking()
+ //.FirstOrDefaultAsync(m => m.ID == id);
 
             var rochie =  await _context.Rochie.FirstOrDefaultAsync(m => m.ID == id);
             if (rochie == null)
             {
                 return NotFound();
             }
+            Rochie = rochie;
+            Rochie = await _context.Rochie
+.Include(b => b.Designer)
+.Include(b => b.CategoriiRochii).ThenInclude(b => b.Categorie)
+.AsNoTracking()
+.FirstOrDefaultAsync(m => m.ID == id);
             PopulateAssignedCategoryData(_context, Rochie);
 
 
-            Rochie = rochie;
-            ViewData["DesignerID"] = new SelectList(_context.Set<Designer>(), "NumeDesigner",
-"ID");
+           // Rochie = rochie;
+            ViewData["DesignerID"] = new SelectList(_context.Set<Designer>(), "ID", "NumeDesigner");
 
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(int? id, string[]
-categorieSelectata)
+        public async Task<IActionResult> OnPostAsync(int? id, string[] categorieSelectata)
         {
             if (id == null)
             {
@@ -66,6 +70,7 @@ categorieSelectata)
           
             var rochieToUpdate = await _context.Rochie
             .Include(i => i.Designer)
+               
             .Include(i => i.CategoriiRochii)
             .ThenInclude(i => i.Categorie)
             .FirstOrDefaultAsync(s => s.ID == id);
@@ -77,8 +82,11 @@ categorieSelectata)
             if (await TryUpdateModelAsync<Rochie>(
             rochieToUpdate,
             "Rochie",
-            i => i.Denumire, i => i.Marime,
-            i => i.Pret,  i => i.DesignerID))
+                i => i.Denumire, i => i.Marime, i => i.Designer, i => i.CategoriiRochii,
+                i => i.Pret,  i => i.DesignerID))
+
+          //  i => i.Denumire, i => i.Designer, i => i.Marime, i => i.Pret,
+           // i => i.CategoriiRochii,  i => i.DesignerID))
             {
                 UpdateRochieCategorii(_context, categorieSelectata, rochieToUpdate);
                 await _context.SaveChangesAsync();
